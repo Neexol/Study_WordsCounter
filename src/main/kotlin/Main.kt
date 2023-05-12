@@ -2,8 +2,8 @@ import opennlp.tools.postag.POSModel
 import opennlp.tools.postag.POSTaggerME
 import java.io.File
 
-fun getWordsFromFile(file: File): Array<String> {
-    return file.readText().split(Regex("\\W+")).filter { it.isNotEmpty() }.toTypedArray()
+fun getWordsFromFile(text: String): Array<String> {
+    return text.split(Regex("\\W+")).filter { it.isNotEmpty() }.toTypedArray()
 }
 
 fun defineTags(words: Array<String>): Array<String> {
@@ -15,8 +15,8 @@ fun countPOS(pos: Array<String>): Map<Char, Int> {
 }
 
 fun main() {
-    val countOfPOS = countPOS(defineTags(getWordsFromFile(File("text.txt"))))
-    println("Verb: ${countOfPOS['V']}")
-    println("Adjective: ${countOfPOS['J']}")
-    println("Adverb: ${countOfPOS['R']}")
+    val posToCount = countPOS(defineTags(getWordsFromFile(File("text.txt").readText())))
+    println("Verb: ${posToCount['V']}")
+    println("Adjective: ${posToCount['J']}")
+    println("Adverb: ${posToCount['R']}")
 }
