@@ -7,12 +7,16 @@ fun getWords(): Array<String> {
     return text.split(Regex("\\W+")).filter { it.isNotEmpty() }.toTypedArray()
 }
 
-fun getTags(words: Array<String>): Array<String> {
+fun defineTags(words: Array<String>): Array<String> {
     return POSTaggerME(POSModel(File("models/en-pos-maxent.bin").inputStream())).tag(words)
 }
 
+fun countPOS(pos: Array<String>): Map<Char, Int> {
+    return pos.groupingBy { it[0] }.eachCount()
+}
+
 fun main() {
-    val countOfPOS = getTags(getWords()).groupingBy { it[0] }.eachCount()
+    val countOfPOS = countPOS(defineTags(getWords()))
     println("Verb: ${countOfPOS['V']}")
     println("Adjective: ${countOfPOS['J']}")
     println("Adverb: ${countOfPOS['R']}")
