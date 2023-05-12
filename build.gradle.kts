@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.example"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -14,8 +14,8 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("org.apache.opennlp:opennlp-tools:2.2.0")
-    implementation("org.slf4j:slf4j-api:1.7.5")
-    implementation("org.slf4j:slf4j-log4j12:1.7.5")
+    implementation("org.slf4j:slf4j-api:2.0.7")
+    implementation("org.slf4j:slf4j-log4j12:2.0.7")
 }
 
 tasks.test {
