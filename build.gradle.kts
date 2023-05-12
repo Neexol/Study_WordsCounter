@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.8.20"
+    id("org.sonarqube") version "3.5.0.2730"
     application
 }
 
@@ -27,4 +28,12 @@ kotlin {
 
 application {
     mainClass.set("MainKt")
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectKey", "Neexol_Study_WordsCounter")
+        property("sonar.organization", "neexol")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }
