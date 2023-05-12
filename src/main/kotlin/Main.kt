@@ -12,7 +12,8 @@ fun getTags(words: Array<String>): Array<String> {
 }
 
 fun main() {
-    val words = getWords()
-    val tags = getTags(words)
-    println(words.zip(tags))
+    val countOfPOS = getTags(getWords()).groupingBy { it[0] }.eachCount()
+    println("Verb: ${countOfPOS['V']}")
+    println("Adjective: ${countOfPOS['J']}")
+    println("Adverb: ${countOfPOS['R']}")
 }
