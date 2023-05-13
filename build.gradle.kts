@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.8.20"
     id("org.sonarqube") version "3.5.0.2730"
     application
+    jacoco
 }
 
 group = "org.example"
@@ -20,6 +21,11 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
 }
 
 kotlin {
