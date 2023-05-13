@@ -73,3 +73,4 @@ jobs:
         with:
           base-path: src/main/kotlin
           file: build/reports/jacoco/test/jacocoTestReport.xml
+          format: jacoco
