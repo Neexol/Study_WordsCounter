@@ -70,3 +70,6 @@ jobs:
         run: ./gradlew jacocoTestReport
       - name: Coveralls
         uses: coverallsapp/github-action@v2
+        with:
+          base-path: src/main/kotlin
+          file: build/reports/jacoco/test/jacocoTestReport.xml
